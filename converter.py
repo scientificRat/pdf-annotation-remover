@@ -23,7 +23,7 @@ def remove_annotation(in_file, out_file):
     reader = pdfrw.PdfReader(in_file)
     for p in reader.pages:
         if p.Annots:
-            # See PDF reference, Sec. 12.5.6 for all annotation types, /Link 应该是主要的注解
+            # See PDF reference, Sec. 12.5.6 for all annotation types
             p.Annots = [a for a in p.Annots if a.Subtype == "/Link"]
     pdfrw.PdfWriter(out_file, trailer=reader).write()
 
